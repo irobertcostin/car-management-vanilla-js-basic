@@ -1,0 +1,45 @@
+body table{
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+table caption {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.tablebody tr th {
+    font-weight: 500;
+    margin-top: 10px;
+    color: green;
+}
+
+tr:nth-child(even){
+
+
+    background-color: rgb(47, 255, 82);
+}
+
+.insertElements {
+    /* border: 2px solid green; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+.selected{
+
+    background-color:red ;
+
+    
+}
