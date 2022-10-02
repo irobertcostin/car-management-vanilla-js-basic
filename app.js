@@ -1,18 +1,24 @@
 
-
+// add object
 let btnCreate = document.querySelector(".btn");
 
+
+// object selection
 let bdyTable = document.querySelector(".tablebody");
-
-let deletion = document.querySelector(".delete");
-
-let show = document.querySelector(".show");
-
-let celeSterse = "";
-
 let marcaSelectata = "";
-
 let objSelectat="";
+
+// item deletion
+let deletion = document.querySelector(".delete")
+
+// inject text
+let marca = document.querySelector(".marca");
+let model = document.querySelector(".model");
+let an = document.querySelector(".an");
+let culoare = document.querySelector(".culoare");
+let nrKm = document.querySelector(".nrKm");
+
+
 
 btnCreate.addEventListener("click", () => {
 
@@ -38,20 +44,21 @@ btnCreate.addEventListener("click", () => {
             alert(resp[i]);
         }
 
-
-
     }
+
+
+
+
 });
 
 
 
-// ace
-
 bdyTable.addEventListener("click", (e) => {
 
+    
+    let butonEdit = "Edit";
 
     let obj = e.target;
-
 
     if (obj.classList.contains("marca")) {
         //var objSelectat , daca este diferita de gol, sa ii scoata clasa elementului selectat, inainte de functia de selectare, adica sa ne stearga deja, daca e ceva selectat
@@ -64,20 +71,30 @@ bdyTable.addEventListener("click", (e) => {
         // am declarat marcaSelectata = cu obiectul din eventul click, ca sa o putem importa in functia de eliminare 
         marcaSelectata = obj.textContent;
 
+        // continutul query selectorului nostru pe baza de clasa devine textul mai sus declarat
+        btnCreate.textContent = butonEdit;
+
         // stocam obiectul selectat, ca sa il putem  sterge inainte de a adauga clasa altui element 
         objSelectat = obj;
 
+        //redefinim obiect
+        let car=getCarByMarca(cars,marcaSelectata);
+
+
+        //inputurile se recompleteaza
+        //valoare inputului cu clasa de mai sus este egala cu obiectul.atributul car.marca
+        marca.value=car.marca;
+        model.value = car.model;
+        an.value = car.an;
+        culoare.value = car.culoare;
+        nrKm.value = car.nrKm;
+        
+
+    } else {
+        // daca nu contine clasa marca, continutul device cealalta variabila declarata mai sus
+        btnCreate.textContent = butonAdauga;
     }
-
-
-    // cauta metode gata implementate precum textContent si classList pentru objects 
-
-
 })
-
-
-
-
 
 
 deletion.addEventListener("click", () => {
@@ -92,12 +109,13 @@ deletion.addEventListener("click", () => {
 
     populateTable(cars);
 
-
+    btnCreate.textContent = "Adauga masina";
 
 })
 
 
 populateTable(cars);
+
 
 
 

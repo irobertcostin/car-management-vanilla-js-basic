@@ -118,3 +118,21 @@ function eliminateCar (arr,marca) {
     return nou;
 
 }
+
+
+
+//functie ce primete ca parametru modelul si ne returneaeaza obiectul
+
+
+function getCarByMarca (arr,parametru) {
+
+    let x = "";
+    for (i=0;i<arr.length;i++) {
+
+        if (arr[i].marca == parametru) {
+            x= arr[i];
+        }
+
+    }
+    return  x;
+}

@@ -69,5 +69,5 @@ let cars=[
       culoare: "Maroon",
       nrKm: 20869
     },
- 
+
   ]
