@@ -19,6 +19,16 @@ let culoare = document.querySelector(".culoare");
 let nrKm = document.querySelector(".nrKm");
 
 
+// item edit 
+
+let editare = document.querySelector(".edit");
+
+
+// item search 
+
+let search = document.querySelector(".search");
+
+
 
 btnCreate.addEventListener("click", () => {
 
@@ -56,7 +66,7 @@ btnCreate.addEventListener("click", () => {
 bdyTable.addEventListener("click", (e) => {
 
     
-    let butonEdit = "Edit";
+    // let butonEdit = "Edit";
 
     let obj = e.target;
 
@@ -72,7 +82,7 @@ bdyTable.addEventListener("click", (e) => {
         marcaSelectata = obj.textContent;
 
         // continutul query selectorului nostru pe baza de clasa devine textul mai sus declarat
-        btnCreate.textContent = butonEdit;
+        // btnCreate.textContent = butonEdit;
 
         // stocam obiectul selectat, ca sa il putem  sterge inainte de a adauga clasa altui element 
         objSelectat = obj;
@@ -88,12 +98,15 @@ bdyTable.addEventListener("click", (e) => {
         an.value = car.an;
         culoare.value = car.culoare;
         nrKm.value = car.nrKm;
+
+        marca.disabled=true;
         
 
-    } else {
-        // daca nu contine clasa marca, continutul device cealalta variabila declarata mai sus
-        btnCreate.textContent = butonAdauga;
-    }
+    } 
+    // else {
+//         // daca nu contine clasa marca, continutul devine cealalta variabila declarata mai sus
+//         btnCreate.textContent = butonAdauga;
+//     }
 })
 
 
@@ -109,13 +122,57 @@ deletion.addEventListener("click", () => {
 
     populateTable(cars);
 
-    btnCreate.textContent = "Adauga masina";
+    initiateFields();
 
 })
 
 
+editare.addEventListener("click", ()=> {
+
+
+    let masina = {
+        marca:marca.value,
+        model:model.value,
+        an:an.value,
+        culoare:culoare.value,
+        nrKm:nrKm.value
+    }
+
+
+  
+    cars=updateCar(cars,masina);
+
+    populateTable(cars);
+
+
+    initiateFields();
+   
+
+})
+
+
+
+search.addEventListener("click", () => {
+
+
+    populateTable(searchCarByMarca(cars,marca.value));
+    
+
+})
+
+
+
+function initiateFields(){
+
+    marca.disabled=false;
+
+    marca.value = "";
+    model.value = "";
+    an.value = "";
+    culoare.value = "";
+    nrKm.value = "";
+
+
+}
+
 populateTable(cars);
-
-
-
-

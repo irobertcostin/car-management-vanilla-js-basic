@@ -124,15 +124,43 @@ function eliminateCar (arr,marca) {
 //functie ce primete ca parametru modelul si ne returneaeaza obiectul
 
 
-function getCarByMarca (arr,parametru) {
+function getCarByMarca (arr,marca) {
 
     let x = "";
     for (i=0;i<arr.length;i++) {
 
-        if (arr[i].marca == parametru) {
+        if (arr[i].marca == marca) {
             x= arr[i];
         }
 
     }
     return  x;
+}
+
+
+
+// functie ce primeste array si un obiect din array 
+// arrayul devine 
+function updateCar (arr,masina) {
+    arr=eliminateCar(arr,masina.marca);
+    arr.push(masina);
+    return arr;
+}
+
+
+
+function searchCarByMarca(arr ,marca){
+
+
+    let filtrat=[];
+
+    for(let i=0;i<arr.length;i++){
+
+        if(arr[i].marca.includes(marca)){
+
+        filtrat.push(arr[i]);
+        }
+    }
+
+    return filtrat;
 }
